@@ -42,8 +42,12 @@ public class RepositorioProdutoPerecivelArray {
 	 * @return
 	 */
 	private int procurarIndice(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		for(int i = 0; i < this.produtos.length; i++){
+			if(this.produtos[i].getCodigo() == codigo){
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	/**
@@ -53,8 +57,12 @@ public class RepositorioProdutoPerecivelArray {
 	 * @return
 	 */
 	public boolean existe(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		for(int i = 0; i < this.produtos.length; i++){
+			if(this.produtos[i].getCodigo() == codigo){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
