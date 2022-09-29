@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: produto.TestRepositorioProdutos
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 0.178 sec <<< FAILURE!
-testProcurar(produto.TestRepositorioProdutos)  Time elapsed: 0.031 sec  <<< ERROR!
+Tests run: 5, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 0.071 sec <<< FAILURE!
+testProcurar(produto.TestRepositorioProdutos)  Time elapsed: 0.008 sec  <<< ERROR!
 java.lang.UnsupportedOperationException: Not implemented yet!
 	at produto.RepositorioProdutoArrayList.procurar(RepositorioProdutoArrayList.java:97)
 	at produto.TestRepositorioProdutos.testProcurar(TestRepositorioProdutos.java:43)
@@ -40,7 +40,7 @@ java.lang.UnsupportedOperationException: Not implemented yet!
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-testRemover(produto.TestRepositorioProdutos)  Time elapsed: 0.002 sec  <<< ERROR!
+testRemover(produto.TestRepositorioProdutos)  Time elapsed: 0.001 sec  <<< ERROR!
 java.lang.UnsupportedOperationException: Not implemented yet!
 	at produto.RepositorioProdutoArrayList.inserir(RepositorioProdutoArrayList.java:63)
 	at produto.TestRepositorioProdutos.testRemover(TestRepositorioProdutos.java:36)
@@ -78,7 +78,7 @@ java.lang.UnsupportedOperationException: Not implemented yet!
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-testAtualizar(produto.TestRepositorioProdutos)  Time elapsed: 0.002 sec  <<< ERROR!
+testAtualizar(produto.TestRepositorioProdutos)  Time elapsed: 0.001 sec  <<< ERROR!
 java.lang.UnsupportedOperationException: Not implemented yet!
 	at produto.RepositorioProdutoArrayList.inserir(RepositorioProdutoArrayList.java:63)
 	at produto.TestRepositorioProdutos.testAtualizar(TestRepositorioProdutos.java:29)
@@ -116,7 +116,7 @@ java.lang.UnsupportedOperationException: Not implemented yet!
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-testExiste(produto.TestRepositorioProdutos)  Time elapsed: 0.003 sec  <<< ERROR!
+testExiste(produto.TestRepositorioProdutos)  Time elapsed: 0.001 sec  <<< ERROR!
 java.lang.UnsupportedOperationException: Not implemented yet!
 	at produto.RepositorioProdutoArrayList.existe(RepositorioProdutoArrayList.java:55)
 	at produto.TestRepositorioProdutos.testExiste(TestRepositorioProdutos.java:18)
@@ -154,7 +154,7 @@ java.lang.UnsupportedOperationException: Not implemented yet!
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-testInserir(produto.TestRepositorioProdutos)  Time elapsed: 0.003 sec  <<< ERROR!
+testInserir(produto.TestRepositorioProdutos)  Time elapsed: 0.001 sec  <<< ERROR!
 java.lang.UnsupportedOperationException: Not implemented yet!
 	at produto.RepositorioProdutoArrayList.inserir(RepositorioProdutoArrayList.java:63)
 	at produto.TestRepositorioProdutos.testInserir(TestRepositorioProdutos.java:23)
