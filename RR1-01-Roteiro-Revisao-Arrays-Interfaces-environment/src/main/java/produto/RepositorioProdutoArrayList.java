@@ -1,6 +1,8 @@
 package produto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -42,8 +44,8 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	private int procurarIndice(int codigo) {
-		for(int i = 0; i < this.produtos.size(); i++){
-			if(this.produtos.get(i).getCodigo() == codigo){
+		for (int i = 0; i < this.produtos.size(); i++) {
+			if (this.produtos.get(i).getCodigo() == codigo) {
 				return i;
 			}
 		}
@@ -57,8 +59,8 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	public boolean existe(int codigo) {
-		for(int i = 0; i < this.produtos.size(); i++){
-			if(this.produtos.get(i).getCodigo() == codigo){
+		for (int i = 0; i < this.produtos.size(); i++) {
+			if (this.produtos.get(i).getCodigo() == codigo) {
 				return true;
 			}
 		}
@@ -93,8 +95,13 @@ public class RepositorioProdutoArrayList {
 	 * @param codigo
 	 */
 	public void remover(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int indice = this.procurarIndice(codigo);
+		if (indice == -1) {
+			throw new IllegalArgumentException();
+		}
+
+		this.produtos.remove(indice);
+		this.produtos.removeAll(Arrays.asList("", null));
 	}
 
 	/**
@@ -105,7 +112,10 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	public Produto procurar(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int indice = this.procurarIndice(codigo);
+		if (indice == -1) {
+			return null;
+		}
+		return this.produtos.get(indice);
 	}
 }
