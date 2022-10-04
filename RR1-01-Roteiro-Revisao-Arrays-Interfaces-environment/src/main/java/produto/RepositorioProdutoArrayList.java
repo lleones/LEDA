@@ -74,6 +74,7 @@ public class RepositorioProdutoArrayList {
 		this.produtos.add(produto);
 	}
 
+	
 	/**
 	 * Atualiza um produto armazenado ou retorna um erro caso o produto nao
 	 * esteja no array. Note que, para localizacao, o código do produto será
