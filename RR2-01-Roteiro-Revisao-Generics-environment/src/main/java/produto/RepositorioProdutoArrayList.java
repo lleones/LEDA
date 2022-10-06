@@ -1,6 +1,10 @@
 package produto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Classe que representa um repositório de produtos usando ArrayList como
@@ -17,7 +21,7 @@ public class RepositorioProdutoArrayList {
 	 * A estrutura onde os produtos sao mantidos. Voce nao precisa se preocupar
 	 * por enquanto com o uso de generics em ArrayList.
 	 */
-	private ArrayList produtos;
+	private ArrayList<Produto> produtos;
 
 	/**
 	 * A posicao do ultimo elemento inserido no array de produtos. o valor
@@ -27,7 +31,7 @@ public class RepositorioProdutoArrayList {
 
 	public RepositorioProdutoArrayList(int size) {
 		super();
-		this.produtos = new ArrayList();
+		this.produtos = new ArrayList<Produto>();
 	}
 
 	/**
@@ -40,8 +44,12 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	private int procurarIndice(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		for (int i = 0; i < this.produtos.size(); i++) {
+			if (this.produtos.get(i).getCodigo() == codigo) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	/**
@@ -51,26 +59,33 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	public boolean existe(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		for (int i = 0; i < this.produtos.size(); i++) {
+			if (this.produtos.get(i).getCodigo() == codigo) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
 	 * Insere um novo produto (sem se preocupar com duplicatas)
 	 */
 	public void inserir(Produto produto) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		this.produtos.add(produto);
 	}
 
+	
 	/**
 	 * Atualiza um produto armazenado ou retorna um erro caso o produto nao
 	 * esteja no array. Note que, para localizacao, o código do produto será
 	 * utilizado.
 	 */
 	public void atualizar(Produto produto) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int localizacao = this.procurarIndice(produto.getCodigo());
+		if (localizacao == -1) {
+			throw new NoSuchElementException();
+		}
+		this.produtos.set(localizacao, produto);
 	}
 
 	/**
@@ -81,8 +96,13 @@ public class RepositorioProdutoArrayList {
 	 * @param codigo
 	 */
 	public void remover(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int indice = this.procurarIndice(codigo);
+		if (indice == -1) {
+			throw new IllegalArgumentException();
+		}
+
+		this.produtos.remove(indice);
+		this.produtos.removeAll(Arrays.asList("", null));
 	}
 
 	/**
@@ -93,7 +113,10 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	public Produto procurar(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int indice = this.procurarIndice(codigo);
+		if (indice == -1) {
+			return null;
+		}
+		return this.produtos.get(indice);
 	}
 }

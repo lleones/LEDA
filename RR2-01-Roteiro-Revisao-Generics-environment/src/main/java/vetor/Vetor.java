@@ -40,7 +40,7 @@ public class Vetor<T> {
 	}
 
 	// Insere um objeto no vetor
-	public <T> void inserir(T o) {
+	public void inserir(T o) {
 		this.arrayInterno[this.indice] = o;
 		indice++;
 	}
@@ -61,6 +61,7 @@ public class Vetor<T> {
 				}
 			}
 		}
+		indice--;
 		return resultado;
 	}
 
@@ -76,14 +77,18 @@ public class Vetor<T> {
 
 	// Diz se o vetor está vazio
 	public boolean isVazio() {
-		// TODO Remove the exception and implement your code
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (this.indice == 0) {
+			return true;
+		}
+		return false;
 	}
 
 	// Diz se o vetor está cheio
 	public boolean isCheio() {
-		// TODO Remove the exception and implement your code
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(this.indice == tamanho){
+			return true;
+		}
+		return false;
 	}
 
 }
