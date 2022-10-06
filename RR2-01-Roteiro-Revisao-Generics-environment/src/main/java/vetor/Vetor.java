@@ -7,12 +7,13 @@ import java.util.Comparator;
  * Generics.
  * 
  * @author Adalberto
+ * @param <T>
  *
  */
-public class Vetor {
+public class Vetor<T> {
 
 	// O array interno onde os objetos manipulados são guardados
-	private Object[] arrayInterno;
+	private T[] arrayInterno;
 
 	// O tamanho que o array interno terá
 	private int tamanho;
@@ -39,21 +40,38 @@ public class Vetor {
 	}
 
 	// Insere um objeto no vetor
-	public void inserir(Object o) {
-		// TODO Remove the exception and implement your code
-		throw new UnsupportedOperationException("Not implemented yet!");
+	public <T> void inserir(T o) {
+		this.arrayInterno[this.indice] = o;
+		indice++;
 	}
 
 	// Remove um objeto do vetor
-	public Object remover(Object o) {
-		// TODO Remove the exception and implement your code
-		throw new UnsupportedOperationException("Not implemented yet!");
+	public T remover(T o) {
+		T resultado = null;
+		for (int i = 0; i < arrayInterno.length; i++) {
+			if (arrayInterno[i].equals(0)) {
+				resultado = o;
+				while (true) {
+					if (i + 1 < this.arrayInterno.length) {
+						this.arrayInterno[i] = null;
+						break;
+					} else {
+						arrayInterno[i] = arrayInterno[i + 1];
+					}
+				}
+			}
+		}
+		return resultado;
 	}
 
 	// Procura um elemento no vetor
-	public Object procurar(Object o) {
-		// TODO Remove the exception and implement your code
-		throw new UnsupportedOperationException("Not implemented yet!");
+	public T procurar(T o) {
+		for (int i = 0; i < arrayInterno.length; i++) {
+			if (this.arrayInterno[i].equals(o)) {
+				return this.arrayInterno[i];
+			}
+		}
+		return null;
 	}
 
 	// Diz se o vetor está vazio
