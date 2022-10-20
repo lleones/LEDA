@@ -7,3 +7,33 @@
   <level>FINE</level>
   <message>File 121110281-LUCAS LEONES COSTA DOS SANTOS.zip was received. It was sent by LUCAS LEONES COSTA DOS SANTOS from IP 150.165.42.185 at 18-10-2022 09*18*18</message>
 </record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-10-20T11:56:01.210-0300</date>
+  <logger>LUCAS LEONES COSTA DOS SANTOS</logger>
+  <level>FINE</level>
+  <message>File 121110281-LUCAS LEONES COSTA DOS SANTOS.zip was received. It was sent by LUCAS LEONES COSTA DOS SANTOS from IP 150.165.42.182 at 20-10-2022 11*56*01</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-10-20T15:22:26.239-0300</date>
+  <logger>LUCAS LEONES COSTA DOS SANTOS</logger>
+  <level>FINE</level>
+  <message>File 121110281-LUCAS LEONES COSTA DOS SANTOS.zip was received. It was sent by LUCAS LEONES COSTA DOS SANTOS from IP 150.165.74.39 at 20-10-2022 15*22*26</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-10-20T15:24:21.455-0300</date>
+  <logger>LUCAS LEONES COSTA DOS SANTOS</logger>
+  <level>FINE</level>
+  <message>File 121110281-LUCAS LEONES COSTA DOS SANTOS.zip was received. It was sent by LUCAS LEONES COSTA DOS SANTOS from IP 150.165.74.39 at 20-10-2022 15*24*21</message>
+</record>
