@@ -33,11 +33,20 @@ public class HybridMergeSort<T extends Comparable<T>> extends
 	protected static int MERGESORT_APPLICATIONS = 0;
 	protected static int INSERTIONSORT_APPLICATIONS = 0;
 
-	public void sort(T[] array, int leftIndex, int rightIndex) {
+	@Override
+	public void sort(T[] array){
 		MERGESORT_APPLICATIONS = 0;
 		INSERTIONSORT_APPLICATIONS = 0;
+		sort(array, 0, array.length -1);
+	}
 
-		if (array.length <= SIZE_LIMIT) {
+	public void sort(T[] array, int leftIndex, int rightIndex) {
+		if (rightIndex >= array.length || leftIndex >= rightIndex) {
+			return;
+		}
+		
+
+		if (rightIndex - leftIndex <= SIZE_LIMIT) {
 			insertionSort(array, leftIndex, rightIndex);
 			INSERTIONSORT_APPLICATIONS++;
 		} else {
@@ -64,7 +73,7 @@ public class HybridMergeSort<T extends Comparable<T>> extends
 	public void insertionSort(T[] array, int leftIndex, int rightIndex) {
 		for (int i = 1; i < array.length; i++) {
 			int j = i;
-			while (j > 0 && array[j].compareTo(array[j - 1]) < 0) {
+			while (j > leftIndex && array[j].compareTo(array[j - 1]) < 0) {
 				Util.swap(array, j, j - 1);
 				j -= 1;
 			}

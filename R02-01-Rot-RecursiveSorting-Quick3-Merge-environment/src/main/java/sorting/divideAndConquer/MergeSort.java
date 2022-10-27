@@ -12,6 +12,9 @@ public class MergeSort<T extends Comparable<T>> extends AbstractSorting<T> {
 
 	@Override
 	public void sort(T[] array, int leftIndex, int rightIndex) {
+		if (rightIndex >= array.length || leftIndex >= rightIndex) {
+			return;
+		}
 		if (leftIndex >= rightIndex) {
 			return;
 		} else {

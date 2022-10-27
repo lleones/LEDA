@@ -42,7 +42,8 @@ public class StudentSortingTest {
 	private void getImplementation() {
 		// TODO O aluno deve instanciar sua implementação abaixo ao invés de
 		// null
-		this.implementation = new QuickSortMedianOfThree<Integer>();
+		// this.implementation = new QuickSortMedianOfThree<Integer>();
+		this.implementation = new HybridMergeSort<Integer>();
 		// Assert.fail("Implementation not provided");
 	}
 
