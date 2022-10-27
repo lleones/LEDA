@@ -12,6 +12,9 @@ public class SelectionSort<T extends Comparable<T>> extends AbstractSorting<T> {
 
 	@Override
 	public void sort(T[] array, int leftIndex, int rightIndex) {
+		if (rightIndex >= array.length || leftIndex >= rightIndex) {
+			return;
+		}
 		for (int j = leftIndex; j < array.length; j++) {
 			int menor = j;
 			for (int i = j + 1; i <= rightIndex; i++) {
