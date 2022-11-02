@@ -34,54 +34,45 @@ public class HybridMergeSort<T extends Comparable<T>> extends
 	protected static int INSERTIONSORT_APPLICATIONS = 0;
 
 	@Override
-	public void sort(T[] array){
+	public void sort(T[] array) {
 		MERGESORT_APPLICATIONS = 0;
 		INSERTIONSORT_APPLICATIONS = 0;
-		sort(array, 0, array.length -1);
+		sort(array, 0, array.length - 1);
 	}
 
 	public void sort(T[] array, int leftIndex, int rightIndex) {
-		if (rightIndex >= array.length || leftIndex >= rightIndex) {
+		if (leftIndex >= rightIndex || rightIndex >= array.length) {
 			return;
 		}
-		
-
-		if (rightIndex - leftIndex <= SIZE_LIMIT) {
-			insertionSort(array, leftIndex, rightIndex);
+		if (rightIndex - leftIndex + 1 <= SIZE_LIMIT) {
+			this.insertionSort(array, leftIndex, rightIndex);
 			INSERTIONSORT_APPLICATIONS++;
+
 		} else {
-			mergeSort(array, leftIndex, rightIndex);
+			this.mergeSort(array, leftIndex, rightIndex);
 			MERGESORT_APPLICATIONS++;
-		}
 
+		}
 	}
 
-	public void mergeSort(T[] array, int leftIndex, int rightIndex) {
-		if (leftIndex >= rightIndex) {
-			return;
-		} else {
+	private void mergeSort(T[] array, int leftIndex, int rightIndex) {
+		int meio = (leftIndex + rightIndex) / 2;
+		sort(array, leftIndex, meio);
+		sort(array, meio + 1, rightIndex);
 
-			int meio = (leftIndex + rightIndex) / 2;
-			sort(array, leftIndex, meio);
-			sort(array, meio + 1, rightIndex);
-
-			merge(array, leftIndex, rightIndex, meio);
-		}
-
+		merge(array, leftIndex, rightIndex, meio);
 	}
 
-	public void insertionSort(T[] array, int leftIndex, int rightIndex) {
-		for (int i = 1; i < array.length; i++) {
+	private void insertionSort(T[] array, int leftIndex, int rightIndex) {
+		for (int i = leftIndex + 1; i < rightIndex + 1; i++) {
 			int j = i;
 			while (j > leftIndex && array[j].compareTo(array[j - 1]) < 0) {
-				Util.swap(array, j, j - 1);
-				j -= 1;
+				Util.swap(array, j, --j);
 			}
-
 		}
 	}
 
-	public void merge(T[] array, int leftIndex, int rightIndex, int meio) {
+	private void merge(T[] array, int leftIndex, int rightIndex, int meio) {
 
 		T[] helper = (T[]) new Comparable[array.length];
 		for (int i = leftIndex; i <= rightIndex; i++) {

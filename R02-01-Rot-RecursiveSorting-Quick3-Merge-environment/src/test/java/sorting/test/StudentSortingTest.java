@@ -44,6 +44,8 @@ public class StudentSortingTest {
 		// null
 		// this.implementation = new QuickSortMedianOfThree<Integer>();
 		this.implementation = new HybridMergeSort<Integer>();
+		// this.implementation = new MergeSort<Integer>();
+		// this.implementation = new QuickSort<Integer>();
 		// Assert.fail("Implementation not provided");
 	}
 
@@ -111,4 +113,5 @@ public class StudentSortingTest {
 	 * SEGUIR A ESTRUTURA DOS MÉTODOS DE TESTE ACIMA DESCRITOS, ORDENANDO APENAS
 	 * UMA PARTE DO ARRAY.
 	 */
+
 }

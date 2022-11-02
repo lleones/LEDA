@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import sorting.AbstractSorting;
 import sorting.linearSorting.CountingSort;
+import sorting.linearSorting.ExtendedCountingSort;
 
 public class StudentSortingTest {
 
@@ -39,7 +40,8 @@ public class StudentSortingTest {
 	private void getImplementation() {
 		// TODO O aluno deve instanciar sua implementação abaixo ao invés de
 		// null
-		this.implementation = new CountingSort();
+		// this.implementation = new CountingSort();
+		this.implementation = new ExtendedCountingSort();
 		// Assert.fail("Implementation not provided");
 	}
 
@@ -109,58 +111,79 @@ public class StudentSortingTest {
 	 */
 
 	@Test
-    public void testSort13() {
-        Integer[] array = new Integer[] { 30, 28, 7, 29, 11, 26, 4, 22, 23, 31 };
-        this.implementation.sort(array, 3, 5);
-        Assert.assertArrayEquals(new Integer[] { 30, 28, 7, 11, 26, 29, 4, 22, 23, 31 }, array);
-    }
+	public void testSort10() {
+		Integer[] array = new Integer[] { -3, -6, -1 };
+		this.implementation.sort(array, 0, 2);
+		Assert.assertArrayEquals(new Integer[] { -6, -3, -1 }, array);
+	}
 
-    @Test
-    public void testSort14() {
-        Integer[] array = new Integer[] { 30, 28, 7, 29, 11, 26, 4, 22, 23, 31 };
-        this.implementation.sort(array, 3, 3);
-        Assert.assertArrayEquals(new Integer[] { 30, 28, 7, 29, 11, 26, 4, 22, 23, 31 }, array);
-    }
+	@Test
+	public void testSort11() {
+		Integer[] array = new Integer[] { 0, -1, 8 };
+		this.implementation.sort(array, 0, 2);
+		Assert.assertArrayEquals(new Integer[] { -1, 0, 8 }, array);
+	}
 
-    @Test
-    public void testSort15() {
-        Integer[] array = new Integer[] { 30, 28, 7, 29, 11, 26, 4, 22, 23, 31 };
-        this.implementation.sort(array, 5, 3);
-        Assert.assertArrayEquals(new Integer[] { 30, 28, 7, 29, 11, 26, 4, 22, 23, 31 }, array);
-    }
+	@Test
+	public void testSort12() {
+		Integer[] array = new Integer[] { 5, 3, 2 };
+		this.implementation.sort(array, 0, 2);
+		Assert.assertArrayEquals(new Integer[] { 2, 3, 5 }, array);
+	}
 
-    @Test
-    public void testSort16() {
-        Integer[] array = new Integer[] {};
-        this.implementation.sort(array, 3, 4);
-        Assert.assertArrayEquals(new Integer[] {}, array);
-    }
+	@Test
+	public void testSort13() {
+		Integer[] array = new Integer[] { 30, 28, 7, 29, 11, 26, 4, 22, 23, 31 };
+		this.implementation.sort(array, 3, 5);
+		Assert.assertArrayEquals(new Integer[] { 30, 28, 7, 11, 26, 29, 4, 22, 23, 31 }, array);
+	}
 
-    @Test
-    public void testSort17() {
-        Integer[] array = new Integer[] {};
-        this.implementation.sort(array, 0, 0);
-        Assert.assertArrayEquals(new Integer[] {}, array);
-    }
+	@Test
+	public void testSort14() {
+		Integer[] array = new Integer[] { 30, 28, 7, 29, 11, 26, 4, 22, 23, 31 };
+		this.implementation.sort(array, 3, 3);
+		Assert.assertArrayEquals(new Integer[] { 30, 28, 7, 29, 11, 26, 4, 22, 23, 31 }, array);
+	}
 
-    @Test
-    public void testSort18() {
-        Integer[] array = new Integer[] { 30 };
-        this.implementation.sort(array, 0, 1);
-        Assert.assertArrayEquals(new Integer[] { 30 }, array);
-    }
+	@Test
+	public void testSort15() {
+		Integer[] array = new Integer[] { 30, 28, 7, 29, 11, 26, 4, 22, 23, 31 };
+		this.implementation.sort(array, 5, 3);
+		Assert.assertArrayEquals(new Integer[] { 30, 28, 7, 29, 11, 26, 4, 22, 23, 31 }, array);
+	}
 
-    @Test
-    public void testSort19() {
-        Integer[] array = new Integer[] { 30, 28 };
-        this.implementation.sort(array, 0, 1);
-        Assert.assertArrayEquals(new Integer[] { 28, 30 }, array);
-    }
+	@Test
+	public void testSort16() {
+		Integer[] array = new Integer[] {};
+		this.implementation.sort(array, 3, 4);
+		Assert.assertArrayEquals(new Integer[] {}, array);
+	}
 
-    @Test
-    public void testSort20() {
-        Integer[] array = new Integer[] { 30, 28 };
-        this.implementation.sort(array, 0, 0);
-        Assert.assertArrayEquals(new Integer[] { 30, 28 }, array);
-    }
+	@Test
+	public void testSort17() {
+		Integer[] array = new Integer[] {};
+		this.implementation.sort(array, 0, 0);
+		Assert.assertArrayEquals(new Integer[] {}, array);
+	}
+
+	@Test
+	public void testSort18() {
+		Integer[] array = new Integer[] { 30 };
+		this.implementation.sort(array, 0, 1);
+		Assert.assertArrayEquals(new Integer[] { 30 }, array);
+	}
+
+	@Test
+	public void testSort19() {
+		Integer[] array = new Integer[] { 30, 28 };
+		this.implementation.sort(array, 0, 1);
+		Assert.assertArrayEquals(new Integer[] { 28, 30 }, array);
+	}
+
+	@Test
+	public void testSort20() {
+		Integer[] array = new Integer[] { 30, 28 };
+		this.implementation.sort(array, 0, 0);
+		Assert.assertArrayEquals(new Integer[] { 30, 28 }, array);
+	}
 }
