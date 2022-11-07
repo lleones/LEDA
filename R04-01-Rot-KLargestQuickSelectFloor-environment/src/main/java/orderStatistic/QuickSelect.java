@@ -57,16 +57,19 @@ public class QuickSelect<T extends Comparable<T>> {
 	}
 
 	private T chamadaRecusiva(T[] array, int k, int leftIndex, int rightIndex) {
-		int indexPivot = particiona(array, leftIndex, rightIndex);
-		if (k == indexPivot + 1) {
-			return array[indexPivot];
+		if (leftIndex >= 0 || leftIndex < rightIndex || rightIndex < array.length) {
+			int indexPivot = particiona(array, leftIndex, rightIndex);
+			if (k == indexPivot + 1) {
+				return array[indexPivot];
+			}
+			if (k <= indexPivot + 1) {
+				return chamadaRecusiva(array, k, leftIndex, indexPivot - 1);
+			} else {
+				return chamadaRecusiva(array, k, indexPivot + 1, rightIndex);
+			}
+		} else{
+			return null;
 		}
-		if (k <= indexPivot + 1) {
-			return chamadaRecusiva(array, k, leftIndex, indexPivot - 1);
-		} else {
-			return chamadaRecusiva(array, k, indexPivot + 1, rightIndex);
-		}
-
 	}
 
 	public int particiona(T[] array, int leftIndex, int rightIndex) {
