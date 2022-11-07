@@ -1,5 +1,7 @@
 package orderStatistic;
 
+import java.util.Arrays;
+
 import util.Util;
 
 /**
@@ -32,15 +34,21 @@ public class KLargestOrderStatisticsImpl<T extends Comparable<T>> implements KLa
 	@Override
 	public T[] getKLargest(T[] array, int k) {
 		if (array != null && array.length != 0 && k >= 1 && k <= array.length) {
-			T[] maiores = (T[]) new Comparable[k];
-			int indice = 0;
-			T estatisticaDeOrdem = orderStatistics(array, array.length - k);
-			for (int i = 0; i < array.length; i++) {
-				if (array[i].compareTo(estatisticaDeOrdem) > 0) {
-					maiores[indice++] = array[i];
-				}
+			if (array.length == k) {
+				Arrays.sort(array);
+				return array;
 			}
 
+			T[] maiores = (T[]) new Comparable[k];
+			int indice = 0;
+
+			orderStatistics(array, array.length - k);
+
+			for (int i = array.length - k; i < array.length; i++) {
+				maiores[indice++] = array[i];
+			}
+
+			Arrays.sort(maiores);
 			return maiores;
 		}
 		return (T[]) new Comparable[0];
@@ -60,7 +68,7 @@ public class KLargestOrderStatisticsImpl<T extends Comparable<T>> implements KLa
 	 */
 	public T orderStatistics(T[] array, int k) {
 		if (array != null && array.length != 0 && k >= 1 && k <= array.length) {
-			for (int j = 0; j <= k; j++) {
+			for (int j = 0; j < k; j++) {
 				int menor = j;
 				for (int i = j + 1; i < array.length; i++) {
 					if (array[i].compareTo(array[menor]) < 0) {
