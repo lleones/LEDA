@@ -13,10 +13,15 @@ public class StackImpl<T> implements Stack<T> {
 
 	@Override
 	public T top() {
+		T top;
+
 		if (this.isEmpty()) {
-			return null;
+			top = null;
+		} else {
+			top = array[this.top];
 		}
-		return array[this.top];
+		
+		return top;
 	}
 
 	@Override
