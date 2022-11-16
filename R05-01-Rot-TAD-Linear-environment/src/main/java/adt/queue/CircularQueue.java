@@ -16,18 +16,22 @@ public class CircularQueue<T> implements Queue<T> {
 
 	@Override
 	public void enqueue(T element) throws QueueOverflowException {
-		if (this.isFull()) {
-			throw new QueueOverflowException();
+		if (element != null) {
+			if (this.isFull()) {
+				throw new QueueOverflowException();
+			}
+
+			if (isEmpty()) {
+				this.head = 0;
+				this.tail = 0;
+				this.array[0] = element;
+			} else {
+				tail = (tail + 1) % array.length;
+				array[tail] = element;
+			}
+
+			this.elements++;
 		}
-
-		if(isEmpty()){
-			
-
-
-		}
-		array[(tail + 1) % array.length] = element;
-		tail = (tail + 1) % array.length;
-		this.elements++;
 	}
 
 	@Override
@@ -36,15 +40,23 @@ public class CircularQueue<T> implements Queue<T> {
 			throw new QueueUnderflowException();
 		}
 
-		T retorno = array[(this.head + 1) % array.length];
-		this.head = (this.head + 1) % array.length;
+		T retorno = array[head];
+
+		if (this.head == this.tail) {
+			this.head = -1;
+			this.tail = -1;
+		} else {
+			this.head = (this.head + 1) % array.length;
+		}
+
 		this.elements--;
+
 		return retorno;
 	}
 
 	@Override
 	public T head() {
-		return array[++head];
+		return array[head];
 	}
 
 	@Override
@@ -54,14 +66,7 @@ public class CircularQueue<T> implements Queue<T> {
 
 	@Override
 	public boolean isFull() {
-		boolean retorno;
-		retorno = this.head == this.tail;
-		
-		if (head == -1) {
-			retorno = false;
-		}
-
-		return retorno;
+		return (this.tail + 1) % array.length == head;
 	}
 
 }

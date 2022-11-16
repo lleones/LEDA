@@ -20,7 +20,7 @@ public class StackImpl<T> implements Stack<T> {
 		} else {
 			top = array[this.top];
 		}
-		
+
 		return top;
 	}
 
