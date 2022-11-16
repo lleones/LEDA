@@ -31,20 +31,33 @@ public class QueueImpl<T> implements Queue<T> {
 	}
 
 	private void shiftLeft() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		for (int i = 0; i < tail - 1; i++) {
+			array[i] = array[i + 1];
+		}
+		tail--;
 	}
 
 	@Override
 	public void enqueue(T element) throws QueueOverflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (!(element == null)) {
+			if (this.isFull()) {
+				throw new QueueOverflowException();
+			}
+
+			array[++this.tail] = element;
+		}
+
 	}
 
 	@Override
 	public T dequeue() throws QueueUnderflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (this.isEmpty()) {
+			throw new QueueUnderflowException();
+		}
+
+		T retorno = array[0];
+		this.shiftLeft();
+		return retorno;
 	}
 
 }
