@@ -76,14 +76,10 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 			SingleLinkedListNode<T> node;
 			node = this.getHead();
 
-			while (!(node.isNIL())) {
-				if (node.getNext().getData().equals(element)) {
-					node.setNext(node.getNext().getNext());
-					break;
-				}
+			while (!(node.isNIL()) && !(node.getNext().getData().equals(element))) {
 				node = node.getNext();
-
 			}
+			node.setNext(node.getNext().getNext());
 
 		}
 	}
