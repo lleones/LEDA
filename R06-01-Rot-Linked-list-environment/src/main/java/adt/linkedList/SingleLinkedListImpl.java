@@ -31,21 +31,22 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 
 	@Override
 	public T search(T element) {
-		if (this.isEmpty()) {
-			return this.head.getData();
-		}
+		T retorno = null;
 
-		SingleLinkedListNode<T> node;
-		node = this.getHead();
+		if (!(this.isEmpty())) {
+			SingleLinkedListNode<T> node;
+			node = this.getHead();
 
-		while (!(node.isNIL())) {
-			if (node.getData().equals(element)) {
-				return node.getData();
+			while (!(node.isNIL())) {
+				if (node.getData().equals(element)) {
+					retorno = node.getData();
+				}
+				node = node.getNext();
 			}
-			node = node.getNext();
+
 		}
 
-		return null;
+		return retorno;
 
 	}
 
