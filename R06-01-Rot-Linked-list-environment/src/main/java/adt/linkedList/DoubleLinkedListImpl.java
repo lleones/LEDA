@@ -25,12 +25,12 @@ public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 	public void remove(T element) {
 		if (element != null && !(this.isEmpty())) {
 			DoubleLinkedListNode<T> node = (DoubleLinkedListNode<T>) this.getHead();
-
+			
 			while (!(node.isNIL()) && !(node.getData().equals(element))) {
 				node = (DoubleLinkedListNode<T>) node.getNext();
 			}
 
-			((DoubleLinkedListNode<T>) node).getPrevious().setNext(node.getNext());
+			node.getPrevious().setNext(node.getNext());
 			((DoubleLinkedListNode<T>) node.getNext()).setPrevious(node.getPrevious());
 
 		}
