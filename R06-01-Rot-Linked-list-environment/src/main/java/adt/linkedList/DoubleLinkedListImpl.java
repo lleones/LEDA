@@ -25,7 +25,7 @@ public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 	public void remove(T element) {
 		if (element != null && !(this.isEmpty())) {
 			DoubleLinkedListNode<T> node = (DoubleLinkedListNode<T>) this.getHead();
-			
+
 			while (!(node.isNIL()) && !(node.getData().equals(element))) {
 				node = (DoubleLinkedListNode<T>) node.getNext();
 			}
@@ -54,14 +54,29 @@ public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 
 	@Override
 	public void removeFirst() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (!this.isEmpty()) {
+			if (!head.isNIL()) {
+				this.head = this.head.getNext();
+			} else if (this.head.isNIL()) {
+				this.last = (DoubleLinkedListNode<T>) this.head;
+			} else {
+				((DoubleLinkedListNode<T>) this.head).setPrevious(new DoubleLinkedListNode<T>());
+			}
+		}
 	}
 
 	@Override
 	public void removeLast() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (!this.isEmpty()) {
+			if (!this.last.isNIL()) {
+				this.last = this.last.getPrevious();
+			}
+			if (this.last.isNIL()) {
+				this.head = this.last;
+			} else {
+				this.last.setNext(new DoubleLinkedListNode<T>());
+			}
+		}
 	}
 
 	public DoubleLinkedListNode<T> getLast() {
