@@ -1,8 +1,12 @@
 package adt.hashtable.closed;
 
+import java.util.LinkedList;
+
 import adt.hashtable.hashfunction.HashFunction;
+import adt.hashtable.hashfunction.HashFunctionClosedAddress;
 import adt.hashtable.hashfunction.HashFunctionClosedAddressMethod;
 import adt.hashtable.hashfunction.HashFunctionFactory;
+import util.Util;
 
 public class HashtableClosedAddressImpl<T> extends
 		AbstractHashtableClosedAddress<T> {
@@ -19,7 +23,7 @@ public class HashtableClosedAddressImpl<T> extends
 	 * getPrimeAbove as documented bellow.
 	 * 
 	 * The length of the internal table must be the immediate prime number
-	 * greater than the given size (or the given size, if it is already prime). 
+	 * greater than the given size (or the given size, if it is already prime).
 	 * For example, if size=10 then the length must
 	 * be 11. If size=20, the length must be 23. You must implement this idea in
 	 * the auxiliary method getPrimeAbove(int size) and use it.
@@ -48,37 +52,82 @@ public class HashtableClosedAddressImpl<T> extends
 	/**
 	 * It returns the prime number that is closest (and greater) to the given
 	 * number.
-	 * If the given number is prime, it is returned. 
+	 * If the given number is prime, it is returned.
 	 * You can use the method Util.isPrime to check if a number is
 	 * prime.
 	 */
 	int getPrimeAbove(int number) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int nextPrime = number;
+		if (!Util.isPrime(nextPrime)) {
+			while (!Util.isPrime(nextPrime)) {
+				nextPrime++;
+			}
+		}
+		return nextPrime;
 	}
 
 	@Override
 	public void insert(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (element != null) {
+			int hash = this.getHash(element);
+
+			if (this.table[hash] == null) {
+				this.table[hash] = new LinkedList<T>();
+			} else {
+				this.COLLISIONS++;
+			}
+
+			if (!((LinkedList<T>) this.table[hash]).contains(element)) {
+				((LinkedList<T>) this.table[hash]).add(element);
+				this.elements++;
+			}
+		}
 	}
 
 	@Override
 	public void remove(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (element != null) {
+			int hash = this.getHash(element);
+			if (this.table[hash] != null) {
+				((LinkedList<T>) this.table[hash]).remove(element);
+				this.elements--;
+			}
+		}
 	}
 
 	@Override
 	public T search(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		T retorno = null;
+		int indexRetorno;
+		int hash = this.getHash(element);
+
+		indexRetorno = this.indexOf(element);
+
+		if (indexRetorno != -1) {
+			if (((LinkedList<T>) this.table[hash]).contains(element)) {
+				retorno = element;
+			}
+		}
+
+		return retorno;
 	}
 
 	@Override
 	public int indexOf(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int index = -1;
+		int hash = this.getHash(element);
+		if (element != null) {
+			if (this.table[hash] != null) {
+				if (((LinkedList<T>) this.table[hash]).contains(element)) {
+					index = hash;
+				}
+			}
+		}
+		return index;
+	}
+
+	private int getHash(T element) {
+		return ((HashFunctionClosedAddress<T>) this.hashFunction).hash(element);
 	}
 
 }
