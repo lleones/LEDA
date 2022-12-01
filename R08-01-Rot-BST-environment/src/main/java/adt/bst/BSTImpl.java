@@ -25,8 +25,25 @@ public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 
 	@Override
 	public BSTNode<T> search(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return this.search(this.root, element);
+	}
+
+	private BSTNode<T> search(BSTNode<T> node, T element) {
+		BSTNode<T> retorno = new BSTNode<>();
+
+		if (!node.isEmpty()) {
+			if (node.getData().equals(element)) {
+				retorno = node;
+			} else {
+				if (node.getData().compareTo(element) > 0) {
+					retorno = this.search((BSTNode<T>) node.getLeft(), element);
+				} else {
+					retorno = this.search((BSTNode<T>) node.getRight(), element);
+				}
+			}
+		}
+
+		return retorno;
 	}
 
 	@Override
@@ -37,14 +54,40 @@ public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 
 	@Override
 	public BSTNode<T> maximum() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return this.maximum(this.root);
+	}
+
+	private BSTNode<T> maximum(BSTNode<T> node) {
+		BSTNode<T> retorno = new BSTNode<>();
+
+		if (!this.isEmpty()) {
+			if (node.getRight().isEmpty()) {
+				retorno = node;
+			} else {
+				retorno = this.maximum((BSTNode<T>) node.getRight());
+			}
+		}
+
+		return retorno;
 	}
 
 	@Override
 	public BSTNode<T> minimum() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return minimum(this.root);
+	}
+
+	private BSTNode<T> minimum(BSTNode<T> node) {
+		BSTNode<T> retorno = new BSTNode<>();
+
+		if (!this.isEmpty()) {
+			if (node.getLeft().isEmpty()) {
+				retorno = node;
+			} else {
+				retorno = this.minimum((BSTNode<T>) node.getLeft());
+			}
+		}
+
+		return retorno;
 	}
 
 	@Override
