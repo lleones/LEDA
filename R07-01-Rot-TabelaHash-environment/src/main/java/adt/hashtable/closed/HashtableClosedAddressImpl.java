@@ -68,7 +68,7 @@ public class HashtableClosedAddressImpl<T> extends
 
 	@Override
 	public void insert(T element) {
-		if (element != null) {
+		if (element != null && this.search(element) == null) {
 			int hash = this.getHash(element);
 
 			if (this.table[hash] == null) {
@@ -89,8 +89,10 @@ public class HashtableClosedAddressImpl<T> extends
 		if (element != null) {
 			int hash = this.getHash(element);
 			if (this.table[hash] != null) {
-				((LinkedList<T>) this.table[hash]).remove(element);
-				this.elements--;
+				if (((LinkedList<T>) this.table[hash]).contains(element)) {
+					((LinkedList<T>) this.table[hash]).remove(element);
+					this.elements--;
+				}
 			}
 		}
 	}

@@ -22,7 +22,7 @@ public class HashtableOpenAddressLinearProbingImpl<T extends Storable> extends
 			while (probe < this.table.length) {
 				int hash = this.getHash(element, probe);
 
-				if (this.table[hash] == null || this.table[hash].equals(new DELETED())) {
+				if (this.table[hash] == null || this.table[hash].equals(this.deletedElement)) {
 					this.table[hash] = element;
 					this.elements++;
 					break;
@@ -52,7 +52,7 @@ public class HashtableOpenAddressLinearProbingImpl<T extends Storable> extends
 				}
 
 				if (this.table[hash].equals(element)) {
-					this.table[hash] = new DELETED();
+					this.table[hash] = this.deletedElement;
 					this.elements--;
 					break;
 				}
